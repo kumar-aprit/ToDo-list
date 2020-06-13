@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <title>ToDo</title>
+        <link rel="stylesheet" type="text/css" href="todo.css">
+    </head>
+    <body>
+        <div class="container">
+            Current time is <span id="time"></span>
+        </div>
+        <div class="box">
+            <div><h1>ToDo!</h1></div>
+            <input type="text" onfocus="this.value=''" placeholder="what to do..." id="title">
+            <div>
+            <button id="add">Add</button>
+            <button id="clear">Reset</button>
+            </div>
+        </div>
+        <div id="items">
+            <div class="boxlist">
+                <h1>List!</h1>
+                <ul id="listt">
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="boxmarked">
+            <h1>Done!</h1>
+            <ul id="done"></ul>
+        </div>
+        <script>
+            function getval(){
+                tit=document.getElementById('title').value;
+                if (localStorage.getItem('itemsJson')==null){
+                    itemJsonArray = [];
+                    itemJsonArray.push([tit]);
+                    localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray))
+                }
+            
+                else{
+
+                    itemJsonArrayStr = localStorage.getItem('itemsJson')
+                    itemJsonArray = JSON.parse(itemJsonArrayStr);
+                    itemJsonArray.push([tit]);
+                    localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray))
+                }
+                update();
+            }
+            function update(){
+                itemJsonArrayStr= localStorage.getItem('itemsJson')
+                itemJsonArray= JSON.parse(itemJsonArrayStr);
+                console.log(itemJsonArray)
+                let list=document.getElementById('listt');
+                let str=""
+
+                itemJsonArray.forEach((element,index) => {
+                    str+= `<div>
+                                <div id="li${index}" class="todo">
+                                    <li>${element[0]}</li>
+                                </div>
+                                <div class="op">
+                                    <button onclick="del(${index})">Delete</button>
+                                    <button onclick="markdone(${index})"">Mark done</button>
+                                </div>
+                            </div>`;
+                    
+                });
+                list.innerHTML=str;
+
+            }
+            
+            function del(ind){
+                itemJsonArrayStr=localStorage.getItem('itemsJson')
+                itemJsonArray=JSON.parse(itemJsonArrayStr);
+                console.log(ind+" "+itemJsonArray);
+                itemJsonArray.splice(ind,1);
+                localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray));
+                update();
+            }
+            setInterval(updateTime, 1000);
+            function updateTime() {
+            n= new Date();
+            time.innerHTML = n.getHours()+":"+n.getMinutes()+":"+n.getSeconds();
+        }
+            function markdone(index){
+                i="li"+index;
+                let li = document.getElementById(i).innerHTML;
+                del(index);
+                document.getElementById("done").innerHTML+=li+"@ "+n.getHours()+":"+n.getMinutes()+" on "+n.getDate()+"/"+n.getMonth();
+            }
+            setInterval(updateTime, 1000);
+            function updateTime() {
+            n= new Date();
+            time.innerHTML = n.getHours()+":"+n.getMinutes()+":"+n.getSeconds();
+        }
+
+            add=document.getElementById('add');
+            add.addEventListener("click",getval);
+
+
+
+        </script>
+    </body>
+</html>

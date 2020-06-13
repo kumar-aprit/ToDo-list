@@ -1,0 +1,86 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+.box{
+    width:450px;
+    border:2px blue solid;
+    border-radius: 6px;
+    position: absolute;
+    top:10%;
+    left:32%;
+    padding:10px;
+    text-align: center;
+    background-color: blue;
+    color:yellow;
+}
+.box input{
+    width:70%;
+    padding:10px;
+    margin:10px;
+    background-color: yellow;
+    border: 2px rgb(139, 139, 19) solid;
+    border-radius: 10px;
+}
+.boxlist{
+    text-align: center;
+    width:380px;
+    border:2px blue solid;
+    border-radius: 6px;
+    position: absolute;
+    top:10%;
+    background-color: blue;
+    color:yellow;
+}
+.boxmarked{
+    text-align: center;
+    width:380px;
+    border:2px blue solid;
+    border-radius: 6px;
+    position: absolute;
+    top:10%;
+    background-color: blue;
+    left:70%;
+    color:yellow;
+}
+.box button{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
+    margin:10px;
+    background-color: yellow;
+    color:black;
+}
+.todo{
+    text-align: left;
+    font-size: 18px;
+    width:150px;
+    float:left;
+    color:yellow;
+    
+}
+
+.boxmarked li{
+    text-align: left;
+    font-size: 18px;
+    width:150px;
+    text-decoration: line-through;
+    color:yellow;
+    
+
+}
+
+.op{
+    float:right;
+    width:150px;
+}
+.boxlist button{
+    background-color: yellow;
+
+
+}
+
+
+.container{
+    font-size: 20px;
+    text-align: right;
+}
